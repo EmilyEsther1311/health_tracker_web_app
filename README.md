@@ -12,7 +12,7 @@ A web-based health tracking application that enables users to monitor, analyse, 
 - **Exercise Management**: Create, edit, and categorize exercise types by duration and intensity. Upload supporting documents (images, PDFs) for exercise routines.
 - **Support Groups**: Create and manage support groups, join existing ones, and view group members.
 - **Activity Calendar**: Generate custom date-range reports for logged activities and body measurements.
-- 
+
 ---
 
 ## Tech Stack
