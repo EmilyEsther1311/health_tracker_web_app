@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Exercise Types</h1>
+
+<a href="{{ url_for('exercise_type_new') }}">+ Add New</a>
+<br>
+<br>
+
+<form method="GET">
+    <select name="intensity" onchange="this.form.submit()"> <!-- Create a dropdown menu named "intensity", which automatically submits upon selection -->
+        <option value="" selected="selected">All</option> <!-- Default choice -->
+        <option value="1" {%if intensity=="1"%}selected{%endif%}>Intensity 1</option>
+        <option value="2" {%if intensity=="2"%}selected{%endif%}>Intensity 2</option>
+        <option value="3" {%if intensity=="3"%}selected{%endif%}>Intensity 3</option>
+        <option value="4" {%if intensity=="4"%}selected{%endif%}>Intensity 4</option>
+        <option value="5" {%if intensity=="5"%}selected{%endif%}>Intensity 5</option>
+    </select>
+ </form>
+<br>
+
+{%if exercise_types%}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+             <th>Description</th>
+             <th>Duration</th>
+             <th>Intensity</th>
+             <th>Supporting File</th>
+             <th>Edit</th>
+             <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+
+      {% for type in exercise_types %}
+         <tr>
+             <td>{{ type.description }}</td>
+             <td>{{ type.duration }}</td>
+             <td>{{ type.intensity }}</td>
+             {% if type.attachment_filename %}
+             <td><a href="{{ url_for('download_file', filename=type.attachment_filename) }}">{{ type.attachment_filename }}</a></td>
+             {% else %}
+             <td><em>None</em></td>
+             {% endif %}
+             <td><a href="{{ url_for('exercise_type_edit', type_id=type.id) }}">Edit</a></td>
+             <td><a href="{{ url_for('exercise_type_delete', type_id=type.id) }}">Delete</a></td>
+         </tr>
+      {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+  <p>No exercise types have been added yet</p>
+{% endif %}
+
+{% endblock %}

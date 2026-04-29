@@ -1,0 +1,91 @@
+:root {
+    --primary-pink: #e83e8c;       /* Main pink color */
+    --primary-pink-hover: #c2256c; /* Darker pink for hover states */
+    --light-pink: #ffe6f0;         /* Very light pink for backgrounds */
+    --dark-pink: #a0175a;          /* Deep pink for text/accents */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff5f8 !important; /* Soft pink background for the whole page */
+}
+
+/* Headings */
+h1 {
+    color: var(--dark-pink);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary-pink);
+    padding-bottom: 10px;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: var(--primary-pink);
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--primary-pink-hover);
+}
+
+/* --- Bootstrap Overrides for Pink Theme --- */
+
+/* Primary Buttons */
+.btn-primary {
+    background-color: var(--primary-pink);
+    border-color: var(--primary-pink);
+    color: white;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: var(--primary-pink-hover) !important;
+    border-color: var(--primary-pink-hover) !important;
+    box-shadow: 0 0 0 0.25rem rgba(232, 62, 140, 0.5) !important;
+}
+
+/* Outline Buttons */
+.btn-outline-primary {
+    color: var(--primary-pink);
+    border-color: var(--primary-pink);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-pink);
+    border-color: var(--primary-pink);
+    color: white;
+}
+
+/* Custom Navbar Background */
+.bg-pink-nav {
+    background-color: var(--primary-pink) !important;
+}
+
+/* Tables */
+.table-hover tbody tr:hover {
+    background-color: var(--light-pink) !important;
+}
+
+.table-dark {
+    background-color: var(--dark-pink) !important;
+    color: white;
+}
+
+/* Input Fields Focus Ring */
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-pink);
+    box-shadow: 0 0 0 0.25rem rgba(232, 62, 140, 0.25);
+}
+
+/* Checkboxes and Radios */
+.form-check-input:checked {
+    background-color: var(--primary-pink);
+    border-color: var(--primary-pink);
+}
+
+/* Formatting for WTForms lists */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}

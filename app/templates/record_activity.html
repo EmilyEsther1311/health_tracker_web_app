@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Record Activity</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.exercise_type_id.label }}<br>
+            {{ form.exercise_type_id }}
+        </p>
+        <p>{{ form.start_time() }} to {{ form.end_time() }}</p>
+        <p>
+            {{ form.notes.label }}<br>
+            {{ form.notes }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

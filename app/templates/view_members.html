@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Members of {{ s_group.name }}</h1>
+<br>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+             <th>Member</th>
+             <th>Remove Member</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+             <td>{{ s_group.leader.username }} (leader)</td>
+             <td></td>
+        </tr>
+      {% for member in members %}
+         <tr>
+             <td>{{ member.username }}</td>
+             <td><a href="{{ url_for('remove_member', s_group_id=s_group.id, member_id=member.id) }}">Remove</a></td>
+         </tr>
+      {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<a href="{{ url_for('support_groups') }}">Go Back</a>
+
+{% endblock %}

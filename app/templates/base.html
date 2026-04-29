@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+        <title>Health Tracker</title>
+</head>
+<body>
+        <div style="margin:10px">
+            <a href="{{ url_for('index') }}">Home</a> &nbsp;
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Login</a> &nbsp;
+             <a href="{{ url_for('register') }}">Register</a> &nbsp;
+            {% else %}
+            <a href="{{ url_for('logout') }}">Logout</a> &nbsp;
+            <a href="{{ url_for('exercise_types') }}">Exercises</a> &nbsp;
+            <a href="{{ url_for('record_activity') }}">Record Activity</a> &nbsp;
+            <a href="{{ url_for('body_measurement') }}">Record Body Measurement</a> &nbsp;
+            <a href="{{ url_for('calendar') }}">Activity Calendar</a> &nbsp;
+            <a href="{{ url_for('support_groups') }}">Support Groups</a>
+            {% endif %}
+        </div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+    <main style="margin:10px">{% block content %}    {% endblock %}</main>
+
+</body>
+</html>

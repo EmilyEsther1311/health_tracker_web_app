@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Activity Calendar{% endblock %}
+
+{% block content %}
+<h1>Activity Calendar</h1>
+
+
+{%if days %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Activities</th>
+            <th>Body Measurements</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for d in days %}
+    <tr>
+        <td>
+            {{ d.strftime("%A %Y-%m-%d") }}
+        </td>
+
+        <td>
+            {% for a in activities if a.start_time.date() == d %}
+                <div>
+                    {{ a.exercise_type.description }} - {{ a.start_time.strftime("%H:%M") }} to {{ a.end_time.strftime("%H:%M") }}
+                </div>
+            {% else %}
+                <em>No activities</em>
+            {% endfor %}
+        </td>
+
+        <td>
+            {% for m in measurements if m.timestamp.date() == d %}
+                <div>
+                    {{ m.weight}} kg <br>
+                    {{ m.pulse}} bpm
+                </div>
+            {% else %}
+                <em>No measurements</em>
+            {% endfor %}
+        </td>
+
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{% endif %}
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>{{ form.start_date() }} to {{ form.end_date() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}
