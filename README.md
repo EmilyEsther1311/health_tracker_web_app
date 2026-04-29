@@ -42,26 +42,63 @@ A web-based health tracking application that enables users to monitor, analyse, 
 ```
 ---
 
-## Installation & Setup
+## Getting started
 
-1. **Clone the repository**
+### Prerequisites
+- Python 3.11+
+- `pip`
 
-        git clone https://github.com/EmilyEsther1311/health_tracker_web_app.git
-        cd health_tracker_web_app
+### Installation
 
-2. **Create a virtual environment**
+```bash
+# 1. Clone the repo
+git clone <repo-url>
+cd B-Well
 
-        python -m venv venv
-        source venv/bin/activate   # On Windows: venv\Scripts\activate
+# 2. Create and activate a virtual environment
+python -m venv .venv
 
-3. **Install dependencies**
+# Windows
+.venv\Scripts\activate
+# macOS / Linux
+source .venv/bin/activate
 
-        pip install -r requirements.txt
+# 3. Install dependencies
+pip install -r requirements.txt
+```
 
-4. **Run the application**
+### Configuration & Database Setup
 
-        python run.py
+Set environment variables (optional — sensible defaults exist):
 
-5. **Open in browser**
+```bash
+# Windows (PowerShell)
+$env:SECRET_KEY="your-secret-key"
+$env:DATABASE_URL="sqlite:///app.db"
+$env:FLASK_APP="app"
 
-        http://localhost:5000
+# macOS / Linux
+export SECRET_KEY="your-secret-key"
+export DATABASE_URL="sqlite:///app.db"
+export FLASK_APP="app"
+```
+
+**Populating the Database:**
+To quickly get started with dummy accounts, sample exercises, activities, body measurements, and support groups, you can populate the database using the `reset_database()` function provided in `setup.py`. 
+
+Run the following commands in your terminal to execute the setup script within the Flask application context:
+
+```bash
+flask shell
+>>> from setup import setup
+>>> reset_database()
+>>> exit()
+```
+
+### Running the app
+
+```bash
+flask run
+```
+
+Then open <http://127.0.0.1:5000> in your browser.
