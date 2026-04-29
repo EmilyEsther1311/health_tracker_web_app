@@ -52,8 +52,8 @@ A web-based health tracking application that enables users to monitor, analyse, 
 
 ```bash
 # 1. Clone the repo
-git clone <repo-url>
-cd B-Well
+git clone https://github.com/EmilyEsther1311/health_tracker_web_app.git
+cd health_tracker_web_app
 
 # 2. Create and activate a virtual environment
 python -m venv .venv
